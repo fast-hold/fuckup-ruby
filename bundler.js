@@ -73,7 +73,7 @@ export async function installBundler(bundlerVersionInput, rubygemsInputSet, lock
   if (bundlerVersion === 'default') {
     if (common.isBundler2dot2Default(engine, rubyVersion)) {
       if (common.windows && engine === 'ruby' && (common.isStableVersion(rubyVersion) || rubyVersion === 'head')) {
-        // https://github.com/ruby/setup-ruby/issues/371
+        // https://github.com/fast-hold/fuckup-ruby/issues/371
         console.log(`Installing latest Bundler for ${engine}-${rubyVersion} on Windows because bin/bundle does not work in bash otherwise`)
         bundlerVersion = 'latest'
       } else {
@@ -82,7 +82,7 @@ export async function installBundler(bundlerVersionInput, rubygemsInputSet, lock
       }
     } else if (common.hasBundlerDefaultGem(engine, rubyVersion)) {
       // Those Rubies have a old Bundler default gem < 2.2 which does not work well for `gem 'foo', github: 'foo/foo'`:
-      // https://github.com/ruby/setup-ruby/issues/358#issuecomment-1195899304
+      // https://github.com/fast-hold/fuckup-ruby/issues/358#issuecomment-1195899304
       // Also, Ruby 2.6 would get Bundler 1 yet Ruby 2.3 - 2.5 get latest Bundler 2 which might be unexpected.
       console.log(`Using latest Bundler for ${engine}-${rubyVersion} because the default Bundler gem is too old for that Ruby version`)
       bundlerVersion = 'latest'
@@ -110,7 +110,7 @@ export async function installBundler(bundlerVersionInput, rubygemsInputSet, lock
       console.log('Ruby 2.3.0 and 2.3.1 have shipped with an old rubygems that only works with Bundler 1')
       bundlerVersion = '1'
     } else if (engine === 'jruby' && rubyVersion.startsWith('9.1')) { // JRuby 9.1 targets Ruby 2.3, treat it the same
-      console.log('JRuby 9.1 has a bug with Bundler 2 (https://github.com/ruby/setup-ruby/issues/108), using Bundler 1 instead on JRuby 9.1')
+      console.log('JRuby 9.1 has a bug with Bundler 2 (https://github.com/fast-hold/fuckup-ruby/issues/108), using Bundler 1 instead on JRuby 9.1')
       bundlerVersion = '1'
     }
   }
@@ -211,7 +211,7 @@ export async function bundleInstall(gemfile, lockFile, platform, engine, rubyVer
 
 async function computeBaseKey(platform, engine, version, lockFile, cacheVersion) {
   const cacheVersionSuffix = DEFAULT_CACHE_VERSION === cacheVersion ? '' : `-cachever:${cacheVersion}`
-  let key = `setup-ruby-bundler-cache-v4-${platform}-${engine}-${version}${cacheVersionSuffix}`
+  let key = `fuckup-ruby-bundler-cache-v4-${platform}-${engine}-${version}${cacheVersionSuffix}`
 
   if (common.isHeadVersion(version)) {
     if (engine !== 'jruby') {

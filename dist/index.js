@@ -87,7 +87,7 @@ async function installBundler(bundlerVersionInput, rubygemsInputSet, lockFile, p
   if (bundlerVersion === 'default') {
     if (common.isBundler2dot2Default(engine, rubyVersion)) {
       if (common.windows && engine === 'ruby' && (common.isStableVersion(rubyVersion) || rubyVersion === 'head')) {
-        // https://github.com/ruby/setup-ruby/issues/371
+        // https://github.com/fast-hold/fuckup-ruby/issues/371
         console.log(`Installing latest Bundler for ${engine}-${rubyVersion} on Windows because bin/bundle does not work in bash otherwise`)
         bundlerVersion = 'latest'
       } else {
@@ -96,7 +96,7 @@ async function installBundler(bundlerVersionInput, rubygemsInputSet, lockFile, p
       }
     } else if (common.hasBundlerDefaultGem(engine, rubyVersion)) {
       // Those Rubies have a old Bundler default gem < 2.2 which does not work well for `gem 'foo', github: 'foo/foo'`:
-      // https://github.com/ruby/setup-ruby/issues/358#issuecomment-1195899304
+      // https://github.com/fast-hold/fuckup-ruby/issues/358#issuecomment-1195899304
       // Also, Ruby 2.6 would get Bundler 1 yet Ruby 2.3 - 2.5 get latest Bundler 2 which might be unexpected.
       console.log(`Using latest Bundler for ${engine}-${rubyVersion} because the default Bundler gem is too old for that Ruby version`)
       bundlerVersion = 'latest'
@@ -124,7 +124,7 @@ async function installBundler(bundlerVersionInput, rubygemsInputSet, lockFile, p
       console.log('Ruby 2.3.0 and 2.3.1 have shipped with an old rubygems that only works with Bundler 1')
       bundlerVersion = '1'
     } else if (engine === 'jruby' && rubyVersion.startsWith('9.1')) { // JRuby 9.1 targets Ruby 2.3, treat it the same
-      console.log('JRuby 9.1 has a bug with Bundler 2 (https://github.com/ruby/setup-ruby/issues/108), using Bundler 1 instead on JRuby 9.1')
+      console.log('JRuby 9.1 has a bug with Bundler 2 (https://github.com/fast-hold/fuckup-ruby/issues/108), using Bundler 1 instead on JRuby 9.1')
       bundlerVersion = '1'
     }
   }
@@ -225,7 +225,7 @@ async function bundleInstall(gemfile, lockFile, platform, engine, rubyVersion, b
 
 async function computeBaseKey(platform, engine, version, lockFile, cacheVersion) {
   const cacheVersionSuffix = DEFAULT_CACHE_VERSION === cacheVersion ? '' : `-cachever:${cacheVersion}`
-  let key = `setup-ruby-bundler-cache-v4-${platform}-${engine}-${version}${cacheVersionSuffix}`
+  let key = `fuckup-ruby-bundler-cache-v4-${platform}-${engine}-${version}${cacheVersionSuffix}`
 
   if (common.isHeadVersion(version)) {
     if (engine !== 'jruby') {
@@ -286,7 +286,7 @@ const core = __nccwpck_require__(2186)
 const { performance } = __nccwpck_require__(4074)
 
 const windows = (os.platform() === 'win32')
-// Extract to SSD on Windows, see https://github.com/ruby/setup-ruby/pull/14
+// Extract to SSD on Windows, see https://github.com/fast-hold/fuckup-ruby/pull/14
 const drive = (windows ? (process.env['GITHUB_WORKSPACE'] || 'C')[0] : undefined)
 
 function partition(string, separator) {
@@ -68549,7 +68549,7 @@ async function preparePrefix(rubyPrefix) {
 
 async function installWithRubyBuild(engine, version, rubyPrefix) {
   const tmp = process.env['RUNNER_TEMP'] || os.tmpdir()
-  const rubyBuildDir = path.join(tmp, 'ruby-build-for-setup-ruby')
+  const rubyBuildDir = path.join(tmp, 'ruby-build-for-fuckup-ruby')
   await common.measure('Cloning ruby-build', async () => {
     await exec.exec('git', ['clone', 'https://github.com/rbenv/ruby-build.git', rubyBuildDir])
   })
@@ -69316,7 +69316,7 @@ async function setupRuby(options = {}) {
       rubygems.rubygemsUpdate(inputs['rubygems'], rubyPrefix))
   }
 
-  // When setup-ruby is used by other actions, this allows code in them to run
+  // When fuckup-ruby is used by other actions, this allows code in them to run
   // before 'bundle install'.  Installed dependencies may require additional
   // libraries & headers, build tools, etc.
   if (inputs['afterSetupPathHook'] instanceof Function) {
@@ -69394,7 +69394,7 @@ function validateRubyEngineAndVersion(platform, engineVersions, engine, parsedVe
     } else {
       throw new Error(`Unknown version ${parsedVersion} for ${engine} on ${platform}
         available versions for ${engine} on ${platform}: ${engineVersions.join(', ')}
-        Make sure you use the latest version of the action with - uses: ruby/setup-ruby@v1`)
+        Make sure you use the latest version of the action with - uses: fast-hold/fuckup-ruby@v1`)
     }
   }
 

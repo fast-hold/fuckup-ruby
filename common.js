@@ -8,7 +8,7 @@ const core = require('@actions/core')
 const { performance } = require('perf_hooks')
 
 export const windows = (os.platform() === 'win32')
-// Extract to SSD on Windows, see https://github.com/ruby/setup-ruby/pull/14
+// Extract to SSD on Windows, see https://github.com/fast-hold/fuckup-ruby/pull/14
 export const drive = (windows ? (process.env['GITHUB_WORKSPACE'] || 'C')[0] : undefined)
 
 export function partition(string, separator) {

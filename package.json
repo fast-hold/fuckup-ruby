@@ -1,5 +1,5 @@
 {
-  "name": "setup-ruby",
+  "name": "fuckup-ruby",
   "version": "0.1.0",
   "description": "Download a prebuilt Ruby and add it to the PATH in 5 seconds",
   "main": "index.js",
@@ -8,25 +8,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruby/setup-ruby.git"
+    "url": "git+https://github.com/fast-hold/fuckup-ruby.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
     "Ruby"
   ],
-  "author": "Benoit Daloze",
+  "author": "ungtb10d",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ruby/setup-ruby/issues"
+    "url": "https://github.com/fast-hold/fuckup-ruby/issues"
   },
-  "homepage": "https://github.com/ruby/setup-ruby",
+  "homepage": "https://github.com/fast-hold/fuckup-ruby",
   "dependencies": {
     "@actions/cache": "^2.0.2",
     "@actions/core": "^1.9.1",
     "@actions/exec": "^1.1.1",
     "@actions/io": "^1.1.2",
     "@actions/tool-cache": "^1.7.2",
+    "fuckup-ruby": "^0.1.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {

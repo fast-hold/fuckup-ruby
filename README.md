@@ -1,11 +1,11 @@
-# setup-ruby
+# fuckup-ruby
 
 This action downloads a prebuilt ruby and adds it to the `PATH`.
 
 It is very efficient and takes about 5 seconds to download, extract and add the given Ruby to the `PATH`.
 No extra packages need to be installed.
 
-**Important:** Prefer `ruby/setup-ruby@v1`.
+**Important:** Prefer `fast-hold/fuckup-ruby@v1`.
 If you pin to a commit or release, only the Ruby versions available at the time of the commit
 will be available, and you will need to update it to use newer Ruby versions, see [Versioning](#versioning).
 
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
+    - uses: fast-hold/fuckup-ruby@v1
       with:
         ruby-version: '3.0' # Not needed with a .ruby-version file
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
@@ -93,7 +93,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
+    - uses: fast-hold/fuckup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
@@ -116,7 +116,7 @@ jobs:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
       - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - uses: fast-hold/fuckup-ruby@v1
         with:
           ruby-version: '3.0'
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
@@ -169,7 +169,7 @@ This behavior can be customized, see [action.yml](action.yml) for more details a
 
 This action provides a way to automatically run `bundle install` and cache the result:
 ```yaml
-    - uses: ruby/setup-ruby@v1
+    - uses: fast-hold/fuckup-ruby@v1
       with:
         bundler-cache: true
 ```
@@ -208,7 +208,7 @@ In order to achieve this, set the `cache-version` option to any value other than
 if you have already used it before.)
 
 ```yaml
-    - uses: ruby/setup-ruby@v1
+    - uses: fast-hold/fuckup-ruby@v1
       with:
         bundler-cache: true
         cache-version: 1
@@ -225,18 +225,18 @@ So, please use `bundler-cache: true` instead and report any issue.
 Note that running CI on Windows can be quite challenging if you are not very familiar with Windows.
 It is recommended to first get your build working on Ubuntu and macOS before trying Windows.
 
-* Use Bundler 2.2.18+ on Windows (older versions have [bugs](https://github.com/ruby/setup-ruby/issues/209#issuecomment-889064123)) by not setting the `bundler:` input and ensuring there is no `BUNDLED WITH 1.x.y` in a checked-in `Gemfile.lock`.
+* Use Bundler 2.2.18+ on Windows (older versions have [bugs](https://github.com/fast-hold/fuckup-ruby/issues/209#issuecomment-889064123)) by not setting the `bundler:` input and ensuring there is no `BUNDLED WITH 1.x.y` in a checked-in `Gemfile.lock`.
 * The default shell on Windows is not Bash but [PowerShell](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#using-a-specific-shell).
-  This can lead issues such as multi-line scripts [not working as expected](https://github.com/ruby/setup-ruby/issues/13).
-* The `PATH` contains [multiple compiler toolchains](https://github.com/ruby/setup-ruby/issues/19). Use `where.exe` to debug which tool is used.
+  This can lead issues such as multi-line scripts [not working as expected](https://github.com/fast-hold/fuckup-ruby/issues/13).
+* The `PATH` contains [multiple compiler toolchains](https://github.com/fast-hold/fuckup-ruby/issues/19). Use `where.exe` to debug which tool is used.
 * For Ruby ≥ 2.4, MSYS2 is prepended to the `Path`, similar to what RubyInstaller2 does.
 * For Ruby < 2.4, the DevKit MSYS tools are installed and prepended to the `Path`.
-* Use JRuby 9.2.20+ on Windows (older versions have [bugs](https://github.com/ruby/setup-ruby/issues/18#issuecomment-889072695)).
+* Use JRuby 9.2.20+ on Windows (older versions have [bugs](https://github.com/fast-hold/fuckup-ruby/issues/18#issuecomment-889072695)).
 * JRuby on Windows has multiple issues ([jruby/jruby#7106](https://github.com/jruby/jruby/issues/7106), [jruby/jruby#7182](https://github.com/jruby/jruby/issues/7182)).
 
 ## Versioning
 
-It is highly recommended to use `ruby/setup-ruby@v1` for the version of this action.
+It is highly recommended to use `fast-hold/fuckup-ruby@v1` for the version of this action.
 This will provide the best experience by automatically getting bug fixes, new Ruby versions and new features.
 
 If you instead choose a specific version (v1.2.3) or a commit sha, there will be no automatic bug fixes and
@@ -262,12 +262,12 @@ if the [virtual environment](https://github.com/actions/virtual-environments) is
 
 In other cases, please use a system Ruby or [install Ruby manually](https://github.com/postmodern/chruby/wiki#installing-rubies) instead.
 
-On a self-hosted runner you need to define the `ImageOs` as an evironment variable on the host, you can do this in the `~/actions-runner/.env` file (See [#230](https://github.com/ruby/setup-ruby/issues/230)).
+On a self-hosted runner you need to define the `ImageOs` as an evironment variable on the host, you can do this in the `~/actions-runner/.env` file (See [#230](https://github.com/fast-hold/fuckup-ruby/issues/230)).
 
 ## History
 
 This action used to be at `eregon/use-ruby-action` and was moved to the `ruby` organization.
-Please [update](https://github.com/ruby/setup-ruby/releases/tag/v1.13.0) if you are using `eregon/use-ruby-action`.
+Please [update](https://github.com/fast-hold/fuckup-ruby/releases/tag/v1.13.0) if you are using `eregon/use-ruby-action`.
 
 ## Credits
 

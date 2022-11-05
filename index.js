@@ -72,7 +72,7 @@ export async function setupRuby(options = {}) {
       rubygems.rubygemsUpdate(inputs['rubygems'], rubyPrefix))
   }
 
-  // When setup-ruby is used by other actions, this allows code in them to run
+  // When fuckup-ruby is used by other actions, this allows code in them to run
   // before 'bundle install'.  Installed dependencies may require additional
   // libraries & headers, build tools, etc.
   if (inputs['afterSetupPathHook'] instanceof Function) {
@@ -150,7 +150,7 @@ function validateRubyEngineAndVersion(platform, engineVersions, engine, parsedVe
     } else {
       throw new Error(`Unknown version ${parsedVersion} for ${engine} on ${platform}
         available versions for ${engine} on ${platform}: ${engineVersions.join(', ')}
-        Make sure you use the latest version of the action with - uses: ruby/setup-ruby@v1`)
+        Make sure you use the latest version of the action with - uses: fast-hold/fuckup-ruby@v1`)
     }
   }
 

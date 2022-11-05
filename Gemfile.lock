@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (2.2.0)
+    path (2.0.1)
+    rake (13.0.6)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  json (= 2.2.0)
+  path
+  rake
+
+BUNDLED WITH
+   2.3.25

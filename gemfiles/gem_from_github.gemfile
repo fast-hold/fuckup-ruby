@@ -6,7 +6,7 @@ if RUBY_VERSION >= '2.3'
     raise "Expected Bundler 2.2+ is used on Ruby >= 2.3"
   end
 
-  # From https://github.com/ruby/setup-ruby/issues/358#issuecomment-1195899304
+  # From https://github.com/fast-hold/fuckup-ruby/issues/358#issuecomment-1195899304
   # Tests using github: and the repository uses a non-master default branch.
   gem 'rack-test', github: 'rack/rack-test'
 end

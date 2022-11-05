@@ -22,5 +22,5 @@ $ cp pre-commit .git/hooks/pre-commit
 
 ## Adding a new Ruby version
 
-This is entirely automated now since [this issue](https://github.com/ruby/setup-ruby/issues/254).
+This is entirely automated now since [this issue](https://github.com/fast-hold/fuckup-ruby/issues/254).
 If you do not see a new version more than 24 hours after it was released feel free to file an issue.

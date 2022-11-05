@@ -61,7 +61,7 @@ async function preparePrefix(rubyPrefix) {
 
 async function installWithRubyBuild(engine, version, rubyPrefix) {
   const tmp = process.env['RUNNER_TEMP'] || os.tmpdir()
-  const rubyBuildDir = path.join(tmp, 'ruby-build-for-setup-ruby')
+  const rubyBuildDir = path.join(tmp, 'ruby-build-for-fuckup-ruby')
   await common.measure('Cloning ruby-build', async () => {
     await exec.exec('git', ['clone', 'https://github.com/rbenv/ruby-build.git', rubyBuildDir])
   })
